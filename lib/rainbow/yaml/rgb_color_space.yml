@@ -1,0 +1,107 @@
+# http://brucelindbloom.com/index.html?WorkingSpaceInfo.html
+color:
+    space:
+        CIEXYZ: &ciexyz
+            whitepoint: :e
+            xR:         1
+            yR:         0
+            xG:         0
+            yG:         1
+            xB:         0
+            yB:         0
+        XYZ:
+            <<: *ciexyz
+        sRGB: &sRGB
+            whitepoint: :d65
+            gamma:      2.2
+            xR:         0.64
+            yR:         0.33
+            YR:         0.212656	         
+            xG:         0.30
+            yG:         0.60
+            YG:         0.715158
+            xB:         0.15
+            yB:         0.06
+            YB:         0.072186
+        PAL: &pal
+            <<: *sRGB
+            YR:         0.222021
+            YG:         0.706645
+            YB:         0.071334
+        SECAM:
+            <<: *pal
+        AdobeRGB:
+            whitepoint: :d65
+            gamma:      2.2
+            xR:         0.64
+            yR:         0.33
+            YR:         0.297361
+            xG:         0.21
+            yG:         0.71
+            YG:         0.627355
+            xB:         0.15
+            yB:         0.06
+            YB:         0.075285
+        AdobeWideGamutRGB:
+            whitepoint: :d50
+            gamma:      2.2
+            xR:         0.735
+            yR:         0.265
+            YR:         0.258187
+            xG:         0.115
+            yG:         0.826
+            YG:         0.724938
+            xB:         0.157
+            yB:         0.018
+            YB:         0.016875
+        NTSC1953: &ntsc
+            whitepoint: :c
+            gamma:      2.2
+            xR:         0.67
+            yR:         0.33
+            YR:         0.298839
+            xG:         0.21
+            yG:         0.71
+            YG:         0.586811
+            xB:         0.14
+            yB:         0.08
+            YB:         0.114350
+        NTSC:
+            <<: *ntsc
+        AppleRGB:
+            whitepoint: :d65
+            gamma:      1.8
+            xR:         0.625
+            yR:         0.34
+            YR:         0.244634
+            xG:         0.28
+            yG:         0.595
+            YG:         0.672034
+            xB:         0.155
+            yB:         0.07
+            YB:         0.083332
+        ProPhotoRGB: &prophoto
+            whitepoint: :d50
+            gamma:      1.8
+            xR:         0.7347
+            yR:         0.2653
+            YR:         0.288040
+            xG:         0.1596
+            yG:         0.8404
+            YG:         0.711874
+            xB:         0.0366
+            yB:         0.0001
+            YB:         0.000086
+        CIERGB:
+            whitepoint: :e
+            gamma:      2.2
+            xR:         0.7347
+            yR:         0.2653
+            YR:         0.176204
+            xG:         0.2738
+            yG:         0.7174
+            YG:         0.812985
+            xB:         0.1666
+            yB:         0.0089
+            YB:         0.010811
+

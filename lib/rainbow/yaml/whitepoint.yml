@@ -1,0 +1,183 @@
+color:
+    whitepoint:
+        a:
+            note:       "Incandescent / Tungsten"
+            cct:        2856
+            cie1931:
+                x2:     0.44757
+                y2:     0.40745
+            cie1964:
+                x10:    0.45117
+                y10:    0.40594
+        b:
+            note:       "{obsolete} Direct sunlight at noon"
+            cct:        4874
+            cie1931:
+                x2:     0.34842
+                y2:     0.35161
+            cie1964:
+                x10:    0.34980
+                y10:    0.35270
+        c:
+            note:       "{obsolete} Average / North sky Daylight"
+            cct:        6774
+            cie1931:
+                x2:     0.31006
+                y2:     0.31616
+            cie1964:
+                x10:    0.31039
+                y10:    0.31905
+        d50:
+            note:       "Horizon Light. ICC profile PCS"
+            cct:        5003
+            cie1931:
+                x2:     0.34567
+                y2:     0.35850
+            cie1964:
+                x10:    0.34773
+                y10:    0.35952
+        d55:
+            note:       "Mid-morning / Mid-afternoon Daylight"
+            cct:        5503
+            cie1931:
+                x2:     0.33242
+                y2:     0.34743
+            cie1964:
+                x10:    0.33411
+                y10:    0.34877
+        d65:
+            note:       "Noon Daylight: Television, sRGB color space"
+            cct:        6504
+            cie1931:
+                x2:     0.31271
+                y2:     0.32902
+            cie1964:
+                x10:    0.31382
+                y10:    0.33100
+        d75:
+            note:       "North sky Daylight"
+            cct:        7504
+            cie1931:
+                x2:     0.29902
+                y2:     0.31485
+            cie1964:
+                x10:    0.29968
+                y10:    0.31740
+        e:
+            note:       "Equal energy"
+            cct:        7504
+            cie1931:
+                x2:     0.3333333333333333
+                y2:     0.3333333333333333
+            cie1964:
+                x10:    0.3333333333333333
+                y10:    0.3333333333333333
+        f1:
+            note:       "Daylight Fluorescent"
+            cct:        6430
+            cie1931:
+                x2:     0.31310
+                y2:     0.33727
+            cie1964:
+                x10:    0.31811
+                y10:    0.33559
+        f2:
+            note:       "Cool White Fluorescent"
+            cct:        4230
+            cie1931:
+                x2:     0.37208
+                y2:     0.37529
+            cie1964:
+                x10:    0.37925
+                y10:    0.36733
+        f3:
+            note:       "White Fluorescent"
+            cct:        3450
+            cie1931:
+                x2:     0.40910
+                y2:     0.39430
+            cie1964:
+                x10:    0.41761
+                y10:    0.38324
+        f4:
+            note:       "Warm White Fluorescent"
+            cct:        2940
+            cie1931:
+                x2:     0.44018
+                y2:     0.40329
+            cie1964:
+                x10:    0.44920
+                y10:    0.39074
+        f5:
+            note:       "Daylight Fluorescent"
+            cct:        6350
+            cie1931:
+                x2:     0.31379
+                y2:     0.34531
+            cie1964:
+                x10:    0.31975
+                y10:    0.34246
+                y10:    0.39074
+        f6:
+            note:       "Lite White Fluorescent"
+            cct:        4150
+            cie1931:
+                x2:     0.37790
+                y2:     0.38835
+            cie1964:
+                x10:    0.38660
+                y10:    0.37847
+        f7:
+            note:       "D65 simulator, Daylight simulator"
+            cct:        6500
+            cie1931:
+                x2:     0.31292
+                y2:     0.32933
+            cie1964:
+                x10:    0.31569
+                y10:    0.32960
+        f8:
+            note:       "D50 simulator, Sylvania F40 Design 50"
+            cct:        5000
+            cie1931:
+                x2:     0.34588
+                y2:     0.35875
+            cie1964:
+                x10:    0.34902
+                y10:    0.35939
+        f9:
+            note:       "Cool White Deluxe Fluorescent"
+            cct:        4150
+            cie1931:
+                x2:     0.37417
+                y2:     0.37281
+            cie1964:
+                x10:    0.37829
+                y10:    0.37045
+        f10:
+            note:       "Philips TL85, Ultralume 50"
+            cct:        5000
+            cie1931:
+                x2:     0.34609
+                y2:     0.35986
+            cie1964:
+                x10:    0.35090
+                y10:    0.35444
+        f11:
+            note:       "Philips TL84, Ultralume 40"
+            cct:        4000
+            cie1931:
+                x2:     0.38052
+                y2:     0.37713
+            cie1964:
+                x10:    0.38541
+                y10:    0.37123
+        f12:
+            note:       "Philips TL83, Ultralume 30"
+            cct:        3000
+            cie1931:
+                x2:     0.43695
+                y2:     0.40441
+            cie1964:
+                x10:    0.44256
+                y10:    0.39717
