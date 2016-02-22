@@ -44,6 +44,10 @@ module Rainbow
         xyz = linear_rgb.as_matrix * space.to_xyz_matrix
         Color::XYZ.new(xyz[0,0], xyz[0,1], xyz[0,2])
       end
+      
+      def to_cmy(options = {})
+        Color::CMY.new(1 - r, 1 - g, 1 - b)
+      end
     
       def as_matrix
         @matrix ||= Matrix.rows([[r * 100, g * 100, b * 100]])
