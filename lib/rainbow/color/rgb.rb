@@ -38,6 +38,16 @@ module Rainbow
       end
       alias :gamma_correct :gamma_compress
       alias :compress :gamma_compress
+      
+      def to_xyz
+        linear_rgb = self.gamma_expand
+        xyz = linear_rgb.as_matrix * space.to_xyz_matrix
+        Color::XYZ.new(xyz[0,0], xyz[0,1], xyz[0,2])
+      end
+    
+      def as_matrix
+        @matrix ||= Matrix.rows([[r * 100, g * 100, b * 100]])
+      end
         
     private
     

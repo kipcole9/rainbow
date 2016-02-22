@@ -1,0 +1,251 @@
+# Space info: http://brucelindbloom.com/index.html?WorkingSpaceInfo.html
+# Conversion matrices: http://www.brucelindbloom.com/index.html?Eqn_RGB_XYZ_Matrix.html
+color:
+    space:
+        CIEXYZ: &ciexyz
+            whitepoint: :e
+            xR:         1
+            yR:         0
+            xG:         0
+            yG:         1
+            xB:         0
+            yB:         0
+        XYZ:
+            <<: *ciexyz
+        sRGB: &sRGB
+            whitepoint: :d65
+            gamma:      2.2
+            xR:         0.64
+            yR:         0.33	         
+            xG:         0.30
+            yG:         0.60
+            xB:         0.15
+            yB:         0.06
+            to_xyz:     !ruby/object:Matrix
+              rows:
+              - - 0.4124564
+                - 0.3575761
+                - 0.1804375
+              - - 0.2126729
+                - 0.7151522
+                - 0.0721750
+              - - 0.0193339
+                - 0.1191920
+                - 0.9503041
+              column_count: 3
+            from_xyz:   !ruby/object:Matrix
+              rows:
+              - - 3.2404542
+                - -1.5371385
+                - -0.4985314
+              - - -0.9692660
+                - 1.8760108
+                - 0.0415560
+              - - 0.0556434
+                - -0.2040259 
+                - 1.0572252
+              column_count: 3
+        PAL: &pal
+            <<: *sRGB
+        SECAM:
+            <<: *pal
+        AdobeRGB:
+            whitepoint: :d65
+            gamma:      2.2
+            xR:         0.64
+            yR:         0.33
+            xG:         0.21
+            yG:         0.71
+            xB:         0.15
+            yB:         0.06
+            to_xyz:     !ruby/object:Matrix
+              rows:
+              - - 0.5767309
+                - 0.1855540 
+                - 0.1881852
+              - - 0.2973769
+                - 0.6273491
+                - 0.0752741
+              - - 0.0270343
+                - 0.0706872
+                - 0.9911085
+              column_count: 3
+            from_xyz:   !ruby/object:Matrix
+              rows:
+              - - 2.0413690
+                - -0.5649464
+                - -0.3446944
+              - - -0.9692660
+                - 1.8760108
+                - 0.0415560
+              - - 0.0134474
+                - -0.1183897
+                - 1.0154096
+              column_count: 3
+        AdobeWideGamutRGB:
+            whitepoint: :d50
+            gamma:      2.2
+            xR:         0.735
+            yR:         0.265
+            xG:         0.115
+            yG:         0.826
+            xB:         0.157
+            yB:         0.018
+            to_xyz:     !ruby/object:Matrix
+              rows:
+              - - 0.7161046
+                - 0.1009296
+                - 0.1471858
+              - - 0.2581874
+                - 0.7249378
+                - 0.0168748
+              - - 0.0000000
+                - 0.0517813
+                - 0.7734287
+              column_count: 3
+            from_xyz:   !ruby/object:Matrix
+              rows:
+              - - 1.4628067
+                - -0.1840623
+                - -0.2743606
+              - - -0.5217933
+                - 1.4472381
+                - 0.0677227
+              - - 0.0349342
+                - -0.0968930
+                - 1.2884099
+              column_count: 3
+        NTSC1953: &ntsc
+            whitepoint: :c
+            gamma:      2.2
+            xR:         0.67
+            yR:         0.33
+            xG:         0.21
+            yG:         0.71
+            xB:         0.14
+            yB:         0.08
+            to_xyz:     !ruby/object:Matrix
+              rows:
+              - - 0.6068909
+                - 0.1735011
+                - 0.2003480
+              - - 0.2989164
+                - 0.5865990
+                - 0.1144845
+              - - 0.0000000
+                - 0.0660957
+                - 1.1162243
+              column_count: 3
+            from_xyz:   !ruby/object:Matrix
+              rows:
+              - - 1.9099961
+                - -0.5324542
+                - -0.2882091
+              - - -0.9846663
+                - 1.9991710
+                - -0.0283082
+              - - 0.0583056
+                - -0.1183781
+                - 0.8975535
+              column_count: 3
+        NTSC:
+            <<: *ntsc
+        AppleRGB:
+            whitepoint: :d65
+            gamma:      1.8
+            xR:         0.625
+            yR:         0.34
+            xG:         0.28
+            yG:         0.595
+            xB:         0.155
+            yB:         0.07
+            to_xyz:     !ruby/object:Matrix
+              rows:
+              - - 0.4497288
+                - 0.3162486
+                - 0.1844926
+              - - 0.2446525
+                - 0.6720283
+                - 0.0833192
+              - - 0.0251848
+                - 0.1411824
+                - 0.9224628
+              column_count: 3
+            from_xyz:   !ruby/object:Matrix
+              rows:
+              - - 2.9515373
+                - -1.2894116
+                - -0.4738445
+              - - -1.0851093
+                - 1.9908566
+                - 0.0372026
+              - - 0.0854934
+                - -0.2694964
+                - 1.0912975
+              column_count: 3
+        ProPhotoRGB: &prophoto
+            whitepoint: :d50
+            gamma:      1.8
+            xR:         0.7347
+            yR:         0.2653
+            xG:         0.1596
+            yG:         0.8404
+            xB:         0.0366
+            yB:         0.0001
+            to_xyz:     !ruby/object:Matrix
+              rows:
+              - - 0.7976749
+                - 0.1351917
+                - 0.0313534
+              - - 0.2880402
+                - 0.7118741
+                - 0.0000857
+              - - 0.0000000
+                - 0.0000000
+                - 0.8252100
+              column_count: 3
+            from_xyz:   !ruby/object:Matrix
+              rows:
+              - - 1.3459433
+                - -0.2556075
+                - -0.0511118
+              - - -0.5445989
+                - 1.5081673
+                - 0.0205351
+              - - 0.0000000
+                - 0.0000000
+                - 1.2118128
+              column_count: 3
+        CIERGB:
+            whitepoint: :e
+            gamma:      2.2
+            xR:         0.7347
+            yR:         0.2653
+            xG:         0.2738
+            yG:         0.7174
+            xB:         0.1666
+            yB:         0.0089
+            to_xyz:     !ruby/object:Matrix
+              rows:
+              - - 0.4887180
+                - 0.3106803
+                - 0.2006017
+              - - 0.1762044
+                - 0.8129847
+                - 0.0108109
+              - - 0.0000000
+                - 0.0102048
+                - 0.9897952
+              column_count: 3
+            from_xyz:   !ruby/object:Matrix
+              rows:
+              - - 2.3706743
+                - -0.9000405
+                - -0.4706338
+              - - -0.5138850
+                - 1.4253036
+                - 0.0885814
+              - - 0.0052982
+                - -0.0146949
+                - 1.0093968
+              column_count: 3

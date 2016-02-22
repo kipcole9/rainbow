@@ -1,6 +1,6 @@
 module Rainbow
   module Color
-    class AdobeWideGamutRGB < RGB
+    class AdobeWideGamut < RGB
       
       def initialize(r, g, b, options = {})
         super(r, g, b, options.merge(space: 'AdobeWideGamutRGB'))
