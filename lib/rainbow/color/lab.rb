@@ -1,12 +1,16 @@
 # https://en.wikipedia.org/wiki/Lab_color_space
 module Rainbow
   module Color
-    class Lab
+    class LAB
       include Color::Utilities
       attr_reader :l, :a, :b
       
       def initialize(l, a, b, options = {})
         @l, @a, @b  = l, a, b
+      end
+      
+      def to_s
+        "L*ab(#{l.round(3)}, #{a.round(3)}, #{b.round(3)})"
       end
       
       def to_xyz(options = {})
@@ -26,7 +30,7 @@ module Rainbow
         h = Math::atan2(b, a)
         h = h > 0 ? (h / Math::PI) * 180 : 360 - (h.abs / Math::PI) * 180
         c = Math.sqrt(a ** 2 + b ** 2)
-        Color::Lch.new(l, c, h)
+        Color::LCH.new(l, c, h)
       end
       
       def to_srgb(options = {})

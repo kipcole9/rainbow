@@ -9,6 +9,10 @@ module Rainbow
         @c, @m, @y  = c, m, y
       end
       
+      def to_s
+        "CMYK(#{(c * 100).round}%, #{(m * 100).round}%, #{(y * 100).round}%)"
+      end
+      
       def to_lab(options = {})
         self.to_srgb(options).to_lab(options)
       end
@@ -18,7 +22,7 @@ module Rainbow
       end
       
       def to_srgb(options = {})
-        Color::SRGB.new(( 1 - c ), ( 1 - m ), ( 1 - y ))
+        Color::SRGB.new(( 1 - c ) * 255, ( 1 - m ) * 255, ( 1 - y ) * 255)
       end
       
       def to_cmyk(options = {})
@@ -27,14 +31,14 @@ module Rainbow
         k = m if m < k
         k = y if y < k
         if k == 1
-          c = m = y = 0
+          c2 = m2 = y2 = 0
         else
-          c = (c - k) / (1.0 - k)
-          m = (m - k) / (1.0 - k)
-          y = (y - k) / (1.0 - k)
+          c2 = (c - k) / (1.0 - k)
+          m2 = (m - k) / (1.0 - k)
+          y2 = (y - k) / (1.0 - k)
         end
         
-        Color::CMYK.new(c, m, y, k)
+        Color::CMYK.new(c2, m2, y2, k)
       end
       
     private

@@ -11,20 +11,24 @@ module Rainbow
       
     private
     
-      def expand_channel(c)
-        if c <= 0.04045 
+      def expand_channel(x)
+        c = x / 255.0
+        e = if c <= 0.04045 
           c / 12.92
         else 
           ((c + 0.055) / 1.055) ** GAMMA_CORRECTION_EXPONENT
         end
+        (e * 255).round
       end
       
-      def compress_channel(c)
-        if c <= 0.0031308
+      def compress_channel(x)
+        c = x / 255.0
+        e = if c <= 0.0031308
           c * 12.92
         else 
           1.055 * (c ** (1.0 / GAMMA_CORRECTION_EXPONENT)) - 0.055
         end
+        (e * 255).round
       end
     end
   end

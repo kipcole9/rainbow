@@ -9,6 +9,10 @@ module Rainbow
         @c, @m, @y, @k  = c, m, y, k
       end
       
+      def to_s
+        "CMYK(#{(c * 100).round}%, #{(m * 100).round}%, #{(y * 100).round}%, #{(k * 100).round}%)"
+      end
+      
       def to_lab(options = {})
         self.to_srgb(options).to_lab(options)
       end
@@ -28,15 +32,7 @@ module Rainbow
           (y * (1 - k) + k)
         )
       end
-      
-    private
-    
-      def normalize(t)
-        t3 = t ** 3
-        t3 > 0.008856 ? t3 : ((t - 16 / 116.0) / 7.787037)
-      end
-      
-      
+
     end
   end
 end
