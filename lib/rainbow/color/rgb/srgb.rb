@@ -18,7 +18,7 @@ module Rainbow
         else 
           ((c + 0.055) / 1.055) ** GAMMA_CORRECTION_EXPONENT
         end
-        (e * 255).round
+        e * 255
       end
       
       def compress_channel(x)
@@ -28,7 +28,7 @@ module Rainbow
         else 
           1.055 * (c ** (1.0 / GAMMA_CORRECTION_EXPONENT)) - 0.055
         end
-        (e * 255).round
+        e * 255
       end
     end
   end
