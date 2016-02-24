@@ -24,29 +24,30 @@ module Rainbow
       def to_srgb(options = {})
         r, g, b = matrix_mult(xyz_matrix, Rainbow::Color::Spaces['sRGB'].from_xyz_matrix)
         Color::SRGB.new(
-          (r * 255.0).round, 
-          (g * 255.0).round, 
-          (b * 255.0).round, 
+          [(r * 255.0).round, 0].max,
+          [(g * 255.0).round, 0].max,
+          [(b * 255.0).round, 0].max, 
           linearized: true).gamma_compress
       end
       
       def to_adobe_rgb(options = {})
         r, g, b = matrix_mult(xyz_matrix, Rainbow::Color::Spaces['AdobeRGB'].from_xyz_matrix)
         Color::AdobeRGB.new(          
-          (r * 255.0).round, 
-          (g * 255.0).round, 
-          (b * 255.0).round, 
+          [(r * 255.0).round, 0].max, 
+          [(g * 255.0).round, 0].max, 
+          [(b * 255.0).round, 0].max,  
           linearized: true).gamma_compress
       end
+      alias :to_adobergb :to_adobe_rgb
       
       def to_lab(options = {})
         x2 = normalize_for_lab(x / tristimulus(options).x) 
         y2 = normalize_for_lab(y / tristimulus(options).y)
         z2 = normalize_for_lab(z / tristimulus(options).z)
         
-        l = (116 * y2) - 16
-        a = 500 * (x2 - y2)
-        b = 200 * (y2 - z2)
+        l = (116.0 * y2) - 16.0
+        a = 500.0 * (x2 - y2)
+        b = 200.0 * (y2 - z2)
         
         Color::LAB.new(l, a, b)
       end
@@ -64,7 +65,7 @@ module Rainbow
       end
       
       def normalize_for_lab(c)
-        c > 0.008856 ? (c ** ( 1 / 3.0)) : ((7.787 * c) + (16 / 116.0))
+        c > 0.008856 ? (c ** ( 1.0 / 3.0)) : ((7.787 * c) + (16.0 / 116.0))
       end
       
     end

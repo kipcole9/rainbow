@@ -48,36 +48,31 @@ module Rainbow
         self.to_xyz(options).to_lab(options)
       end
       
+      # http://stackoverflow.com/questions/2353211/hsl-to-rgb-color-conversion
       def to_hsl(options = {})
         var_r = r / 255.0
-        var_g = r / 255.0
-        var_b = r / 255.0
+        var_g = g / 255.0
+        var_b = b / 255.0
         
         min = [var_r, var_g, var_b].min
         max = [var_r, var_g, var_b].max
-        delta = max - min
-        
-        l = (max + min) / 2.0
-        
-        if delta == 0
+        h = s = l = (max + min) / 2.0
+   
+        if max == min
           h = s = 0.0
         else
-          s = l < 0.5 ? delta / (max + min) :  delta / (2 - max - min)
+          delta = max - min
+          s = l > 0.5 ? (delta / (2.0 - max - min)) : (delta / (max + min))
           
-          delta_r = hsl_channel_delta(var_r, delta, max)
-          delta_g = hsl_channel_delta(var_g, delta, max)
-          delta_b = hsl_channel_delta(var_b, delta, max)
-          
-          h = if var_r == delta
-            delta_b - delta_g
-          elsif var_g == delta
-            (1 / 3.0) + delta_r - delta_b
-          elsif var_b == delta
-            (2 / 3.0) + delta_g - delta_r
+          h = case max
+            when var_r
+              (var_g - var_b) / delta + (var_g < var_b ? 6.0 : 0.0)
+            when var_g
+              (var_b - var_r) / delta + 2
+            when var_b
+              (var_r - var_g) / delta + 4
           end
-          
-          h += 1 if h < 0
-          h -= 1 if h > 1
+          h /= 6
         end          
         Color::HSL.new(h, s, l)
       end
@@ -117,22 +112,19 @@ module Rainbow
       alias :compress :gamma_compress
       
       def as_matrix
-        @matrix ||= Matrix.rows([[r / 255.0 * 100, g / 255.0 * 100, b / 255.0 * 100]])
+        @matrix ||= Matrix.rows([[r.to_f / 255.0 * 100.0, g.to_f / 255.0 * 100.0, b.to_f / 255.0 * 100.0]])
       end
         
     private
     
       def expand_channel(c)
-        ((c / 255.0) ** gamma) * 255.0
+        (((c / 255.0) ** gamma) * 255.0).round
       end
 
       def compress_channel(c)
-        ((c / 255.0) ** (1 / gamma)) * 255.0
+        (((c / 255.0) ** (1 / gamma)) * 255.0).round
       end
-      
-      def hsl_channel_delta(c, delta, max)
-        (((max - c) / 6.0) + (delta / 2.0)) / delta
-      end 
+
     end
   end
 end

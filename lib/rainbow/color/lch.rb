@@ -3,6 +3,8 @@ module Rainbow
   module Color
     class LCH
       include Color::Utilities
+      include Color::Wheel
+      
       attr_reader :l, :c, :h
       
       def initialize(l, c, h, options = {})
@@ -37,6 +39,15 @@ module Rainbow
       
       def to_srgb(options = {})
         self.to_xyz(options).to_srgb(options)
+      end
+      
+      def to_adobe_rgb(options = {})
+        self.to_xyz(options).to_adobe_rgb(options)
+      end
+      alias :to_adobergb :to_adobe_rgb
+      
+      def to_lch(options = {})
+        self
       end
       
     private

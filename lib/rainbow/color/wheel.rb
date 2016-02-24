@@ -1,3 +1,5 @@
+require 'rainbow/color/harmony'
+
 module Rainbow
   module Color
     module Wheel
@@ -39,31 +41,40 @@ module Rainbow
         end
       end
       
-      def complement
-        lch = self.to_lch
-        hue = (lch.h + 180) % 360
-        Color::LCH.new(lch.l, lch.c, hue)
+      # https://en.wikipedia.org/wiki/Complementary_colors
+      # L*ch reputed to create a more perceptually accurate
+      # complement
+      def complement(space = :lch)
+        harmonizer = Object.const_get("Rainbow::Color::Harmony::#{space.to_s.upcase}")
+        complement = harmonizer.complement(self)
+        complement.send converter_method(self)
       end
       
-      def split_complement
-        lch = self.to_lch
-        t1 = (lch.h + 150) % 360
-        t2 = (lch.h - 150) % 360
-        [Color::LCH.new(lch.l, lch.c, t1), Color::LCH.new(lch.l, lch.c, t2)]
+      def split_complement(space = :lch)
+        harmonizer = Object.const_get("Rainbow::Color::Harmony::#{space.to_s.upcase}")
+        complement = harmonizer.split_complement(self)
+        [complement.first.send(converter_method(self)),
+          complement.last.send(converter_method(self))]
       end
       
-      def analogous
-        lch = self.to_lch
-        t1 = (lch.h + 30) % 360
-        t2 = (lch.h - 30) % 360
-        [Color::LCH.new(lch.l, lch.c, t1), Color::LCH.new(lch.l, lch.c, t2)]
+      def analogous(space = :lch)
+        harmonizer = Object.const_get("Rainbow::Color::Harmony::#{space.to_s.upcase}")
+        analogous = harmonizer.analogous(self)
+        [analogous.first.send(converter_method(self)),
+          analogous.last.send(converter_method(self))]
       end
       
-      def triadic
-        lch = self.to_lch
-        t1 = (lch.h + 120) % 360
-        t2 = (lch.h - 120) % 360
-        [Color::LCH.new(lch.l, lch.c, t1), Color::LCH.new(lch.l, lch.c, t2)]
+      def triadic(space = :lch)
+        harmonizer = Object.const_get("Rainbow::Color::Harmony::#{space.to_s.upcase}")
+        triadic = harmonizer.triadic(self)
+        [triadic.first.send(converter_method(self)),
+          triadic.last.send(converter_method(self))]
+      end
+      
+    private
+      
+      def converter_method(o)
+        "to_#{o.class.name.split('::').last.downcase}"
       end
       
     end
