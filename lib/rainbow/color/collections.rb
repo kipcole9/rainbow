@@ -2,6 +2,18 @@ module Rainbow
   module Color
     module Collections
       require 'nokogiri'
+      autoload :HTML,     'rainbow/color/collections/html'
+      autoload :PANTONE,  'rainbow/color/collections/pantone'
+      autoload :AS2700,   'rainbow/color/collections/as2700'
+      autoload :BS381,    'rainbow/color/collections/bs381'
+      autoload :BS4800,   'rainbow/color/collections/bs4800'
+      autoload :RAL,      'rainbow/color/collections/ral'
+      autoload :NCS,      'rainbow/color/collections/ncs'
+      autoload :FS595C,   'rainbow/color/collections/fs595c'
+      
+      def self.collection_names
+        self.singleton_methods
+      end
       
       def self.html
         colors = Nokogiri::HTML(File.open("lib/rainbow/data/collections/HTML_Color_Names.html"))
@@ -84,15 +96,6 @@ module Rainbow
           yield code, SRGB.hex(hex), names
         end
       end
-      
-      HTML    = {}.tap {|collection| html {|code, color, names| collection[code] = {color: color, names: names}}}
-      PANTONE = {}.tap {|collection| pantone {|code, color, names| collection[code] = {color: color, names: names}}}
-      AS2700  = {}.tap {|collection| as2700 {|code, color, names| collection[code] = {color: color, names: names}}}
-      BS381   = {}.tap {|collection| bs381 {|code, color, names| collection[code] = {color: color, names: names}}}
-      BS4800  = {}.tap {|collection| bs4800 {|code, color, names| collection[code] = {color: color, names: names}}}
-      RAL     = {}.tap {|collection| ral {|code, color, names| collection[code] = {color: color, names: names}}}
-      NCS     = {}.tap {|collection| ncs {|code, color, names| collection[code] = {color: color, names: names}}}
-      FS595C  = {}.tap {|collection| fs595c {|code, color, names| collection[code] = {color: color, names: names}}}                              
     end
   end
 end
