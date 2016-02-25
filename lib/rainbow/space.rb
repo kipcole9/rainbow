@@ -17,7 +17,7 @@ module Rainbow
     end
     
     Spaces = {}
-    YAML.load(File.read('lib/rainbow/yaml/color_space.yml'))['color']['space'].each do |name, space|
+    YAML.load(File.read('lib/rainbow/data/color_space.yml'))['color']['space'].each do |name, space|
       Spaces[name] = Space.new(name, space)
     end
   end

@@ -23,7 +23,7 @@ module Rainbow
     end
     
     Whitepoints = {}
-    YAML.load(File.read('lib/rainbow/yaml/whitepoint.yml'))['color']['whitepoint'].each do |name, whitepoint|
+    YAML.load(File.read('lib/rainbow/data/whitepoint.yml'))['color']['whitepoint'].each do |name, whitepoint|
       Whitepoints[name] = Whitepoint.new(name, whitepoint)
     end
   end
