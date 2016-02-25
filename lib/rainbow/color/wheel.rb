@@ -84,28 +84,62 @@ module Rainbow
       def complement(space = :lch)
         harmonizer = Object.const_get("Rainbow::Color::Harmony::#{space.to_s.upcase}")
         complement = harmonizer.complement(self)
-        complement.send converter_method(self)
+        [
+          self,
+          complement.first.send(converter_method(self))
+        ]
       end
       
       def split_complement(space = :lch)
         harmonizer = Object.const_get("Rainbow::Color::Harmony::#{space.to_s.upcase}")
         complement = harmonizer.split_complement(self)
-        [complement.first.send(converter_method(self)),
-          complement.last.send(converter_method(self))]
+        [
+          self,
+          complement.first.send(converter_method(self)),
+          complement.last.send(converter_method(self))
+        ]
       end
       
       def analogous(space = :lch)
         harmonizer = Object.const_get("Rainbow::Color::Harmony::#{space.to_s.upcase}")
         analogous = harmonizer.analogous(self)
-        [analogous.first.send(converter_method(self)),
-          analogous.last.send(converter_method(self))]
+        [
+          self,
+          analogous.first.send(converter_method(self)),
+          analogous.last.send(converter_method(self))
+        ]
       end
       
       def triadic(space = :lch)
         harmonizer = Object.const_get("Rainbow::Color::Harmony::#{space.to_s.upcase}")
         triadic = harmonizer.triadic(self)
-        [triadic.first.send(converter_method(self)),
-          triadic.last.send(converter_method(self))]
+        [
+          self,
+          triadic.first.send(converter_method(self)),
+          triadic.last.send(converter_method(self))
+        ]
+      end
+      
+      def tetradic(space = :lch)
+        harmonizer = Object.const_get("Rainbow::Color::Harmony::#{space.to_s.upcase}")
+        tetradic = harmonizer.tetradic(self)
+        [
+          self,
+          tetradic[0].send(converter_method(self)),
+          tetradic[1].send(converter_method(self)),
+          tetradic[2].send(converter_method(self))
+        ]
+      end
+      
+      def square(space = :lch)
+        harmonizer = Object.const_get("Rainbow::Color::Harmony::#{space.to_s.upcase}")
+        square = harmonizer.square(self)
+        [
+          self,
+          square[0].send(converter_method(self)),
+          square[1].send(converter_method(self)),
+          square[2].send(converter_method(self))
+        ]
       end
       
     private
