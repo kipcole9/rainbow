@@ -2,12 +2,17 @@
 module Rainbow
   module Color
     class SRGB < RGB
+      
       # Although sRGB gamma is considered 2.2, thats an average only
       # an we use 2.4 for linearization
       GAMMA_CORRECTION_EXPONENT = 2.4
       
       def initialize(r, g, b, options = {})
         super(r, g, b, options.merge(space: :sRGB))
+      end
+      
+      def self.hex(hex)
+        new(*Color::Utilities.hex_to_rgb(hex))
       end
       
       def to_srgb(options = {})

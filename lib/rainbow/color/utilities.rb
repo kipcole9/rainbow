@@ -10,6 +10,15 @@ module Rainbow
       def degrees_to_radians(d)
         d / 180.0 * Math::PI
       end
+      
+      def self.hex_to_rgb(hex_string)
+        hex = hex_string.delete('#')
+        r = hex[0..1].to_i(16)
+        g = hex[2..3].to_i(16)
+        b = hex[4..5].to_i(16)
+        [r, g, b]
+      end
+
     end
   end
 end

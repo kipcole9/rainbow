@@ -20,6 +20,7 @@ module Rainbow
     autoload :CMY,                'rainbow/color/spaces/cmy' 
     autoload :CMYK,               'rainbow/color/spaces/cmyk' 
     autoload :Utilities,          'rainbow/color/utilities'
+    autoload :Collections,        'rainbow/color/collections'
     autoload :Wheel,              'rainbow/color/wheel'
     autoload :Whitepoints,        'rainbow/whitepoint'
     autoload :Whitepoint,         'rainbow/whitepoint'

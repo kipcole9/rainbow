@@ -1,7 +1,9 @@
 module Rainbow
   module Color
     class RGB
+      include Color::Utilities
       include Color::Wheel
+      
       attr_reader :r, :g, :b, :space
       
       def initialize(r, g, b, options = {})
